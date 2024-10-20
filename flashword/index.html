@@ -46,12 +46,47 @@
          <button v-on:click="checkAnswer()">Check answer</button>
 
 
-       <div v-if="showFeedback">
+       <template v-if="showFeedback">
             <p v-if="correct" class="correct">You got it!</p>
             <p v-else class="incorrect">Sorry, please try again</p>
-       </div>
+            <button v-on:click="resetAnswer()">Reset</button>
+       </template>
 
-       <button v-if="showReset" v-on:click="resetAnswer()">Reset</button>
+       <h2>Array example</h2>
+       <ul>
+            <li v-for="spanishWord, index in spanishWords"> {{ index }} {{ spanishWord }}</li>
+       </ul>
+
+       
+       <h2>Object example</h2>
+       <ul>
+             <li v-for="thisWord, key, index in word">{{index}} {{ key }} : {{ thisWord }}</li>
+       </ul>
+
+       <h2>Array of object example</h2>
+       <ul>
+        <li v-for="wordObject, index in words"> The english translation of {{wordObject.wordA}} is {{wordObject.wordB}} </li>
+       </ul>
+
+
+
+       <h2>Number example</h2>
+       <ul> 
+        <li v-for="number in 10">{{number}}</li>
+       </ul>
+
+       <h2>Strirng example</h2>
+       <ul> 
+        <li v-for="character in 'Hello World'">{{character}}</li>
+       </ul>
+
+
+       <h2>Combining v-for and v-if</h2>
+        <p v-for="spanishWord, index in spanishWords">
+            <template v-if="spanishWord.length > 3">
+                {{ index }} {{ spanishWord }}
+            </template>
+        </p>
 
     </div>
 </body>
